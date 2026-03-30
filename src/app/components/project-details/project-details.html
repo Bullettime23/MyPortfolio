@@ -1,0 +1,47 @@
+<section class="project-details" id="overview">
+  <div class="main-container">
+    <div class="project-details__content">
+      <div class="project-details__content-gallery">
+        <p-galleria
+          [value]="project()!.images"
+          [containerStyle]="{ maxWidth: '70rem', margin: 'auto' }"
+          [numVisible]="3"
+        >
+          <ng-template #item let-item>
+            <img [src]="item" style="width: 100%" />
+          </ng-template>
+          <ng-template #thumbnail let-item>
+            <img width="180" [src]="item" />
+          </ng-template>
+        </p-galleria>
+      </div>
+
+      <div class="project-details__content-main">
+        <div class="project-details__desc">
+          <h3 class="project-details__content-title">Project Overview</h3>
+          <p class="project-details__desc-para">
+            {{ project()?.overview }}
+          </p>
+        </div>
+        <div class="project-details__tools-used">
+          <h3 class="project-details__content-title">Tools Used</h3>
+          <div class="skills">
+            @for (toolName of project()?.toolsUsed; track toolName) {
+              <div class="skills__skill">{{ toolName }}</div>
+            }
+          </div>
+        </div>
+        <div class="project-details__links">
+          <h3 class="project-details__content-title">See Live</h3>
+          <!-- <a href="#" class="btn btn--med btn--theme project-details__links-btn" target="_blank">Live Link</a> -->
+          <a
+            [href]="project()?.githubLink"
+            class="btn btn--med btn--theme-inv project-details__links-btn"
+            target="_blank"
+            >Github code</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

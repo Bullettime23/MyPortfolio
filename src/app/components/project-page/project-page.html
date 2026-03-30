@@ -1,0 +1,9 @@
+@if (project != null) {
+  <app-header></app-header>
+  <app-hero [title]="project()!.title" [paragraph]="project()!.description"></app-hero>
+  <app-project-details [project]="project()!"></app-project-details>
+
+  <app-footer></app-footer>
+} @else {
+  <h2>Loading...</h2>
+}
