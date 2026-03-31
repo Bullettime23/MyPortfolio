@@ -3,15 +3,28 @@
     <div class="project-details__content">
       <div class="project-details__content-gallery">
         <p-galleria
-          [value]="project()!.images"
-          [containerStyle]="{ maxWidth: '70rem', margin: 'auto' }"
+          [value]="project()!.videos.concat(project()!.images)"
+          [containerStyle]="{ maxWidth: '70rem', margin: 'auto'}"
           [numVisible]="3"
         >
           <ng-template #item let-item>
-            <img [src]="item" style="width: 100%" />
+            @if (item.endsWith('.mp4')) {
+              <video width="100%" controls preload="metadata">
+                <source [src]="item" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            } @else {
+              <img [src]="item" style="width: 100%" />
+            }
           </ng-template>
           <ng-template #thumbnail let-item>
-            <img width="180" [src]="item" />
+            @if (item.endsWith('.mp4')) {
+              <video width="180" preload="metadata">
+                <source [src]="item" type="video/mp4" />
+              </video>
+            } @else {
+              <img width="180" [src]="item" />
+            }
           </ng-template>
         </p-galleria>
       </div>
