@@ -5,7 +5,7 @@ import { ProjectPage } from './components/project-page/project-page';
 export const routes: Routes = [
     {
         path: '',
-        component: MainPage
+        component: MainPage,
     },
     {
         path: 'project/:id',
